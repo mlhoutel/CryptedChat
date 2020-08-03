@@ -1,0 +1,67 @@
+<AppLayout>
+	orientation:"vertical"
+    BoxLayout:
+    	size_hint:(1,0.2)
+    	Button:
+    		text:"A"
+    	Button:
+    		text:"B"
+    	Button:
+    		text:"C"
+    	Button:
+    		text:"D"
+    BoxLayout:
+    	id:messages
+    	orientation:"vertical"
+    	LeftMessage:
+        	text:"testa"
+        RightMessage:
+        	text:"testa"
+        
+    BoxLayout:
+    	orientation:"horizontal"
+    	size_hint:(1,None)
+    	size:(1,120)
+    	TextInput:
+    		id:textbox
+    		text:""
+    		hint_text:"message"
+    		font_size:60
+    		keyboard_suggestions:False
+    		padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+    		multiline:False
+    		cursor_color:(0,0,0,0)
+    		hint_text_color:(0.5,0.5,0.5,0.4)
+    	Button:
+    		size_hint:(0.2,1)
+        	text: "Send"
+        	on_press: root.sendMessage()
+
+<BackgroundColor@Widget>
+    background_color:(1, 1, 1, 1)
+    canvas.before:
+        Color:
+            rgba: root.background_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+            
+<BackgroundLabel@Label+BackgroundColor>
+    background_color:(0, 0, 0, 0)
+
+<Message@BackgroundLabel>
+	valign:'bottom'
+	text_size:self.size
+	padding_x:30
+	padding_y:30
+	size_hint:(1,None)
+	size:(0,200)
+	
+<LeftMessage@Message>
+	halign:'left'
+	background_color:(0.4, 0.2, 0.7,1)
+	
+<RightMessage@Message>
+	halign:'right'
+	background_color:(0.1, 0.4, 0.6, 1)
+

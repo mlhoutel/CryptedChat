@@ -24,44 +24,15 @@
 [WARNING] Factory: Ignored class "SendMessage" re-declaration. Current -  module: None, cls: <class '__main__.SendMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
 [WARNING] Factory: Ignored class "RecvMessage" re-declaration. Current -  module: None, cls: <class '__main__.RecvMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
 [WARNING] Factory: Ignored class "SysMessage" re-declaration. Current -  module: None, cls: <class '__main__.SysMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
-[WARNING] Deprecated property "<VariableListProperty name=padding_y>" of object "<kivy.uix.textinput.TextInput object at 0x789fd1abe0>" was accessed, it will be removed in a future version
+[WARNING] Factory: Ignored class "SendButton" re-declaration. Current -  module: None, cls: <class '__main__.SendButton'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Button, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "BackgroundScroller" re-declaration. Current -  module: None, cls: <class '__main__.BackgroundScroller'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: ScrollView+BackgroundColor, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Deprecated property "<VariableListProperty name=padding_y>" of object "<kivy.factory.TextBox object at 0x789f5bee80>" was accessed, it will be removed in a future version
 [INFO   ] GL: NPOT texture support is available
 [WARNING] Base: Unknown <android> provider
 [INFO   ] Base: Start application main loop
 [INFO   ] Base: Leaving application in progress...
 [WARNING] stderr: Traceback (most recent call last):
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 249, in create_handler
-[WARNING] stderr:     return eval(value, idmap), bound_list
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/app.kv", line 65, in <module>
-[WARNING] stderr:     background_color:(fcol.r, 0.2, 0.7,1)
-[WARNING] stderr: NameError: name 'fcol' is not defined
-[WARNING] stderr: 
-[WARNING] stderr: During handling of the above exception, another exception occurred:
-[WARNING] stderr: 
-[WARNING] stderr: Traceback (most recent call last):
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 690, in _apply_rule
-[WARNING] stderr:     value, bound = create_handler(
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 252, in create_handler
-[WARNING] stderr:     raise BuilderException(rule.ctx, rule.line,
-[WARNING] stderr: kivy.lang.builder.BuilderException: Parser: File "/storage/emulated/0/Python/RSAchat/app.kv", line 65:
-[WARNING] stderr: ...
-[WARNING] stderr:      63:	
-[WARNING] stderr:      64:<SendMessage@Message>
-[WARNING] stderr: >>   65:	background_color:(fcol.r, 0.2, 0.7,1)
-[WARNING] stderr:      66:	
-[WARNING] stderr:      67:<RecvMessage@Message>
-[WARNING] stderr: ...
-[WARNING] stderr: NameError: name 'fcol' is not defined
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 249, in create_handler
-[WARNING] stderr:     return eval(value, idmap), bound_list
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/app.kv", line 65, in <module>
-[WARNING] stderr:     background_color:(fcol.r, 0.2, 0.7,1)
-[WARNING] stderr: 
-[WARNING] stderr: 
-[WARNING] stderr: During handling of the above exception, another exception occurred:
-[WARNING] stderr: 
-[WARNING] stderr: Traceback (most recent call last):
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 51, in <module>
+[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 127, in <module>
 [WARNING] stderr:     ChatApp().run()
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/app.py", line 855, in run
 [WARNING] stderr:     runTouchApp()
@@ -87,6 +58,19 @@
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/widget.py", line 549, in on_touch_down
 [WARNING] stderr:     if child.dispatch('on_touch_down', touch):
 [WARNING] stderr:   File "kivy/_event.pyx", line 707, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/screenmanager.py", line 1191, in on_touch_down
+[WARNING] stderr:     return super(ScreenManager, self).on_touch_down(touch)
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/widget.py", line 549, in on_touch_down
+[WARNING] stderr:     if child.dispatch('on_touch_down', touch):
+[WARNING] stderr:   File "kivy/_event.pyx", line 707, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/relativelayout.py", line 288, in on_touch_down
+[WARNING] stderr:     ret = super(RelativeLayout, self).on_touch_down(touch)
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/widget.py", line 549, in on_touch_down
+[WARNING] stderr:     if child.dispatch('on_touch_down', touch):
+[WARNING] stderr:   File "kivy/_event.pyx", line 707, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/widget.py", line 549, in on_touch_down
+[WARNING] stderr:     if child.dispatch('on_touch_down', touch):
+[WARNING] stderr:   File "kivy/_event.pyx", line 707, in kivy._event.EventDispatcher.dispatch
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/widget.py", line 549, in on_touch_down
 [WARNING] stderr:     if child.dispatch('on_touch_down', touch):
 [WARNING] stderr:   File "kivy/_event.pyx", line 707, in kivy._event.EventDispatcher.dispatch
@@ -97,44 +81,8 @@
 [WARNING] stderr:   File "kivy/_event.pyx", line 1098, in kivy._event.EventObservers._dispatch
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 64, in custom_callback
 [WARNING] stderr:     exec(__kvlang__.co_value, idmap)
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/app.kv", line 41, in <module>
-[WARNING] stderr:     on_press: root.sendMessage()
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 40, in sendMessage
-[WARNING] stderr:     msg=SendMessage(text=txt)
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/label.py", line 318, in __init__
-[WARNING] stderr:     super(Label, self).__init__(**kwargs)
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/widget.py", line 359, in __init__
-[WARNING] stderr:     self.apply_class_lang_rules(
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/widget.py", line 467, in apply_class_lang_rules
-[WARNING] stderr:     Builder.apply(
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 536, in apply
-[WARNING] stderr:     self._apply_rule(
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 705, in _apply_rule
-[WARNING] stderr:     raise BuilderException(rule.ctx, rule.line,
-[WARNING] stderr: kivy.lang.builder.BuilderException: Parser: File "/storage/emulated/0/Python/RSAchat/app.kv", line 65:
-[WARNING] stderr: ...
-[WARNING] stderr:      63:	
-[WARNING] stderr:      64:<SendMessage@Message>
-[WARNING] stderr: >>   65:	background_color:(fcol.r, 0.2, 0.7,1)
-[WARNING] stderr:      66:	
-[WARNING] stderr:      67:<RecvMessage@Message>
-[WARNING] stderr: ...
-[WARNING] stderr: BuilderException: Parser: File "/storage/emulated/0/Python/RSAchat/app.kv", line 65:
-[WARNING] stderr: ...
-[WARNING] stderr:      63:	
-[WARNING] stderr:      64:<SendMessage@Message>
-[WARNING] stderr: >>   65:	background_color:(fcol.r, 0.2, 0.7,1)
-[WARNING] stderr:      66:	
-[WARNING] stderr:      67:<RecvMessage@Message>
-[WARNING] stderr: ...
-[WARNING] stderr: NameError: name 'fcol' is not defined
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 249, in create_handler
-[WARNING] stderr:     return eval(value, idmap), bound_list
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/app.kv", line 65, in <module>
-[WARNING] stderr:     background_color:(fcol.r, 0.2, 0.7,1)
-[WARNING] stderr: 
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 690, in _apply_rule
-[WARNING] stderr:     value, bound = create_handler(
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 252, in create_handler
-[WARNING] stderr:     raise BuilderException(rule.ctx, rule.line,
-[WARNING] stderr: 
+[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/app.kv", line 92, in <module>
+[WARNING] stderr:     on_press: app.root.joinRoom()
+[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 33, in joinRoom
+[WARNING] stderr:     IP_address=root.ids.join_ip.text
+[WARNING] stderr: NameError: name 'root' is not defined

@@ -1,3 +1,8 @@
+import socket
+import select 
+import sys   
+import threading
+
 from kivy.app import App
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
@@ -21,25 +26,6 @@ Window.softinput_mode = "below_target"
 # 305F72   black (0.19, 0.37, 0.45, 1)
 
 # Custom classes implementation
-class AppChat(BoxLayout):
-	pass
-class ScreenManager(ScreenManager):
-	pass
-class MenuScreen(Screen):
-	def screenMessages(self):
-		pass
-	pass
-class MessagesScreen(Screen):
-	def sendMessage(self):
-		txt=self.ids.textbox.text
-		#popup = Popup(title='Test popup', content=Label(text='Hello world'),size_hint=(None, None), size=(600, 800))
-		#popup.open()
-		if txt:
-			msg=SendMessage(text=txt)
-			self.ids.messages.add_widget(msg)
-			self.ids.scroller.scroll_to(msg)
-			self.ids.textbox.text=''
-
 class BackgroundColor(Widget):
 	pass
 class BackgroundLabel(Label,BackgroundColor):
@@ -101,7 +87,82 @@ class BackgroundScroller(ScrollView,BackgroundColor):
 	bkg_g=NumericProperty(0.54)
 	bkg_b=NumericProperty(0.55)
 	bkg_a=NumericProperty(0.3)
+
+class TextBox(TextInput):
+	pass
+class MenuLabel(Label):
+	pass
+
+class ScreenManager(ScreenManager):
+	pass
+class MenuScreen(Screen):
+	pass
+class MessagesScreen(Screen):
+	pass
+
+class AppChat(BoxLayout):
+	# Server initialisation
+	server = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+	IP_address="127.0.0.1"
+	Port="8027"
 	
+	def receptThread(self):
+		while True:
+			sockets_list = [sys.stdin, self.server] 
+			read_sockets, write_socket, error_socket = select.select(sockets_list,[],[])
+			for socks in read_sockets:
+				if socks == self.server:
+				   	data = socks.recv(2048)
+				   	if data:
+				   		message = data.decode('utf-8','ignore')
+				   		Messages.ids.messages.add_widget(SysMessage(text=message))
+				   	else:
+				   		self.server.close()
+				self.server.close() 
+		
+	def joinRoom(self):	
+		try:
+			Menu=self.ids.scr_menu
+			Messages=self.ids.scr_messages
+			
+			self.IP_address=str(Menu.ids.join_ip.text.rstrip())
+			self.Port=int(Menu.ids.join_port.text.rstrip())
+			
+			# Server connection
+			self.server.connect((self.IP_address, self.Port)) 
+			
+			self.ids.sm.transition.direction = 'left'
+			self.ids.sm.current = "messages"
+			
+			Messages.ids.messages.add_widget(SysMessage(text="Connected ("+str(self.IP_address)+":"+str(self.Port)+")"))
+			threading.Thread(target=receptThread, args=()).start()
+  
+		except:
+			Menu.ids.join_label.text="Join a room (Can't reach "+str(self.IP_address)+":"+str(self.Port)+")"
+			
+	def createRoom(self):
+		self.ids.sm.transition.direction = 'left'
+		self.ids.sm.current = "messages"
+	
+	def sendMessage(self):
+		Menu=self.ids.scr_menu
+		Messages=self.ids.scr_messages
+		
+		txt=Messages.ids.textbox.text.rstrip()
+		#popup = Popup(title='Test popup', content=Label(text='Hello world'),size_hint=(None, None), size=(600, 800))
+		#popup.open()
+		if txt:
+			msg=SendMessage(text=txt)
+			Messages.ids.messages.add_widget(msg)
+			self.server.sendall(txt.encode('utf-8'))
+			Messages.ids.scroller.scroll_to(msg)
+			Messages.ids.textbox.text=""
+			
+	def disconnectServer(self):
+		self.server.close()
+		self.ids.sm.transition.direction = 'right'
+		self.ids.sm.current = "menu"
+			
 class ChatApp(App):
         def build(self):
         	self.load_kv('app.kv')

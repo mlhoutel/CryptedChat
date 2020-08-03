@@ -18,33 +18,19 @@
 [INFO   ] GL: Texture max units <16>
 [INFO   ] Window: auto add sdl2 input provider
 [INFO   ] Window: virtual keyboard not allowed, single mode, not docked
-[WARNING] stderr: Traceback (most recent call last):
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 99, in <module>
-[WARNING] stderr:     ChatApp().run()
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/app.py", line 829, in run
-[WARNING] stderr:     root = self.build()
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 95, in build
-[WARNING] stderr:     self.load_kv('app.kv')
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/app.py", line 599, in load_kv
-[WARNING] stderr:     root = Builder.load_file(rfilename)
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 301, in load_file
-[WARNING] stderr:     return self.load_string(data, **kwargs)
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 368, in load_string
-[WARNING] stderr:     parser = Parser(content=string, filename=fn)
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/parser.py", line 401, in __init__
-[WARNING] stderr:     self.parse(content)
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/parser.py", line 510, in parse
-[WARNING] stderr:     objects, remaining_lines = self.parse_level(0, lines)
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/parser.py", line 613, in parse_level
-[WARNING] stderr:     _objects, _lines = self.parse_level(
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/parser.py", line 565, in parse_level
-[WARNING] stderr:     raise ParserException(self, ln,
-[WARNING] stderr: kivy.lang.parser.ParserException: Parser: File "/storage/emulated/0/Python/RSAchat/app.kv", line 4:
-[WARNING] stderr: ...
-[WARNING] stderr:       2:	orientation:"vertical"
-[WARNING] stderr:       3:	Popup:
-[WARNING] stderr: >>    4:	   title:"test"
-[WARNING] stderr:       5:    ActionBar:
-[WARNING] stderr:       6:    	pos_hint: {'top':1}
-[WARNING] stderr: ...
-[WARNING] stderr: Invalid indentation, must be a multiple of 4 spaces
+[WARNING] Factory: Ignored class "BackgroundColor" re-declaration. Current -  module: None, cls: <class '__main__.BackgroundColor'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Widget, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "BackgroundLabel" re-declaration. Current -  module: None, cls: <class '__main__.BackgroundLabel'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Label+BackgroundColor, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "Message" re-declaration. Current -  module: None, cls: <class '__main__.Message'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: BackgroundLabel, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "SendMessage" re-declaration. Current -  module: None, cls: <class '__main__.SendMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "RecvMessage" re-declaration. Current -  module: None, cls: <class '__main__.RecvMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "SysMessage" re-declaration. Current -  module: None, cls: <class '__main__.SysMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "SendButton" re-declaration. Current -  module: None, cls: <class '__main__.SendButton'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Button, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "BackgroundScroller" re-declaration. Current -  module: None, cls: <class '__main__.BackgroundScroller'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: ScrollView+BackgroundColor, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "TextBox" re-declaration. Current -  module: None, cls: <class '__main__.TextBox'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: TextInput, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "MenuLabel" re-declaration. Current -  module: None, cls: <class '__main__.MenuLabel'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Label, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Deprecated property "<VariableListProperty name=padding_y>" of object "<__main__.TextBox object at 0x789f524fa0>" was accessed, it will be removed in a future version
+[INFO   ] GL: NPOT texture support is available
+[WARNING] Base: Unknown <android> provider
+[INFO   ] Base: Start application main loop
+[INFO   ] Base: Leaving application in progress...
+[INFO   ] WindowSDL: exiting mainloop and closing.

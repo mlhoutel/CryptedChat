@@ -2,12 +2,14 @@
 	orientation:"vertical"
 	
 	MenuActionBar:
-	    id:"menubar"
+	    id:menubar
 	    
 	ScreenManager:
 		id:sm
 		MenuScreen:
+			id:scr_menu
 		MessagesScreen:
+			id:scr_messages
 
 <MenuActionBar@ActionBar>
 	pos_hint: {'top':1}
@@ -18,9 +20,7 @@
             with_previous: False
         ActionButton:
             text: 'Disconnect'
-            on_press:
-            	app.root.ids.sm.transition.direction = 'right'
-            	app.root.ids.sm.current='menu'
+            on_press: app.root.disconnectServer()
         ActionGroup:
             text: 'Settings' 
             mode: 'spinner'
@@ -51,18 +51,12 @@
     	orientation:"horizontal"
     	size_hint:(1,None)
     	size:(1,120)
-    	TextInput:
+    	TextBox:
     		id:textbox
     		text:""
     		hint_text:"message"
-    		font_size:60
-    		keyboard_suggestions:False
-    		padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
-    		multiline:False
-    		cursor_color:(0,0,0,0)
-    		hint_text_color:(0.5,0.5,0.5,0.4)
     	SendButton:
-    		on_press: root.sendMessage()
+    		on_press: app.root.sendMessage()
     		
 <MenuScreen>
 	name:"menu"
@@ -71,51 +65,57 @@
 		BoxLayout:
 			orientation:"vertical"
 			Label:
+				id:join_label
 				text:"Join a room"
 			BoxLayout:
 				orientation:"horizontal"
-				Label:
+				MenuLabel:
 					text:"Name"
-				TextInput:
+				TextBox:
+					id:join_name
+					hint_text:"Your name"
 			BoxLayout:
 				orientation:"horizontal"
-				Label:
+				MenuLabel:
 					text:"Ip"
-				TextInput:
+				TextBox:
+					id:join_ip
+					hint_text:"127.0.0.1"
 			BoxLayout:
 				orientation:"horizontal"
-				Label:
+				MenuLabel:
 					text:"Port"
-				TextInput:
+				TextBox:
+					id:join_port
+					hint_text:"8027"
 			Button:
 				text:"Join Room"
-				on_press: 
-					app.root.ids.sm.transition.direction = 'left'
-					app.root.ids.sm.current = "messages"
+				on_press: app.root.joinRoom()
 		BoxLayout:
 			orientation:"vertical"
-			Label:
+			Label
 				text:"Create a room"
 			BoxLayout:
 				orientation:"horizontal"
-				Label:
+				MenuLabel:
 					text:"Name"
-				TextInput:
+				TextBox:
+					hint_text:"Your name"
 			BoxLayout:
 				orientation:"horizontal"
-				Label:
+				MenuLabel:
 					text:"Limit"
-				TextInput:
+				TextBox:
+					hint_text:"20 (pers.)"
 			BoxLayout:
 				orientation:"horizontal"
-				Label:
+				MenuLabel:
 					text:"Port"
-				TextInput:
+				TextBox:
+					hint_text:"8027"
 			Button:
 				text:"Create Room"
-				on_press: 
-					app.root.ids.sm.transition.direction = 'left'
-					app.root.ids.sm.current = "messages"
+				on_press: app.root.createRoom()
 			
 		
 <BackgroundColor@Widget>
@@ -161,3 +161,14 @@
     do_scroll_x:False
     do_scroll_y:True
     background_color:(self.bkg_r, self.bkg_g, self.bkg_b, self.bkg_a)
+
+<TextBox@TextInput>
+    font_size:60
+    keyboard_suggestions:False
+    padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+    multiline:False
+    cursor_color:(0,0,0,0)
+    hint_text_color:(0.5,0.5,0.5,0.4)
+
+<MenuLabel@Label>
+	size_hint:(0.6,1)

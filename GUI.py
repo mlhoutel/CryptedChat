@@ -25,6 +25,10 @@ class AppChat(BoxLayout):
 	pass
 class ScreenManager(ScreenManager):
 	pass
+class MenuScreen(Screen):
+	def screenMessages(self):
+		pass
+	pass
 class MessagesScreen(Screen):
 	def sendMessage(self):
 		txt=self.ids.textbox.text

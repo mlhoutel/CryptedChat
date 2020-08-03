@@ -1,31 +1,42 @@
 <AppChat>:
 	orientation:"vertical"
 	
-	ActionBar:
-	    pos_hint: {'top':1}
-	    ActionView:
-	        use_separator: True
-        	ActionPrevious:
-            	title: 'App'
-            	with_previous: False
-        	ActionButton:
-            	text: 'Disconnect'
-        	ActionGroup:
-            	text: 'Settings' 
-            	mode: 'spinner'
-            	ActionButton:
-                	text: 'Group'
-            	ActionButton:
-                	text: 'System'
-            	ActionButton:
-                	text: 'Custom'
-            	ActionButton:
-                	text: 'Infos'
-                
+	MenuActionBar:
+	    id:"menubar"
+	    
 	ScreenManager:
 		id:sm
+		MenuScreen:
 		MessagesScreen:
-		
+
+<MenuActionBar@ActionBar>
+	pos_hint: {'top':1}
+	ActionView:
+		use_separator: True
+        ActionPrevious:
+            title: 'App'
+            with_previous: False
+        ActionButton:
+            text: 'Disconnect'
+            on_press:
+            	app.root.ids.sm.transition.direction = 'right'
+            	app.root.ids.sm.current='menu'
+        ActionGroup:
+            text: 'Settings' 
+            mode: 'spinner'
+            ActionButton:
+                text: 'Group'
+            ActionButton:
+                text: 'System'
+                on_press: app.open_settings()
+            ActionButton:
+                text: 'Custom'
+            ActionButton:
+                text: 'Infos'
+            ActionButton:
+            	text:'Quit'
+            	on_press: app.get_running_app().stop()
+
 <MessagesScreen>
 	name:"messages"
     BackgroundScroller:
@@ -52,7 +63,61 @@
     		hint_text_color:(0.5,0.5,0.5,0.4)
     	SendButton:
     		on_press: root.sendMessage()
-
+    		
+<MenuScreen>
+	name:"menu"
+	BoxLayout:
+		orientation:"vertical"
+		BoxLayout:
+			orientation:"vertical"
+			Label:
+				text:"Join a room"
+			BoxLayout:
+				orientation:"horizontal"
+				Label:
+					text:"Name"
+				TextInput:
+			BoxLayout:
+				orientation:"horizontal"
+				Label:
+					text:"Ip"
+				TextInput:
+			BoxLayout:
+				orientation:"horizontal"
+				Label:
+					text:"Port"
+				TextInput:
+			Button:
+				text:"Join Room"
+				on_press: 
+					app.root.ids.sm.transition.direction = 'left'
+					app.root.ids.sm.current = "messages"
+		BoxLayout:
+			orientation:"vertical"
+			Label:
+				text:"Create a room"
+			BoxLayout:
+				orientation:"horizontal"
+				Label:
+					text:"Name"
+				TextInput:
+			BoxLayout:
+				orientation:"horizontal"
+				Label:
+					text:"Limit"
+				TextInput:
+			BoxLayout:
+				orientation:"horizontal"
+				Label:
+					text:"Port"
+				TextInput:
+			Button:
+				text:"Create Room"
+				on_press: 
+					app.root.ids.sm.transition.direction = 'left'
+					app.root.ids.sm.current = "messages"
+			
+		
 <BackgroundColor@Widget>
     background_color:(1, 1, 1, 1)
     canvas.before:

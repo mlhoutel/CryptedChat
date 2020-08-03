@@ -1,9 +1,12 @@
-[INFO   ] Logger: Record log in /storage/emulated/0/Python/RSAchat/.kivy/logs/kivy_20-08-03_61.txt
+[INFO   ] Logger: Record log in /storage/emulated/0/Python/RSAchat/.kivy/logs/kivy_20-08-03_130.txt
 [INFO   ] Kivy: v1.11.1
 [INFO   ] Kivy: Installed at "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/__init__.py"
 [INFO   ] Python: v3.8.3 (default, May 27 2020, 02:08:17) 
 [GCC 9.3.0]
 [INFO   ] Python: Interpreter at "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/bin/python3"
+[INFO   ] Logger: Purge log fired. Analysing...
+[INFO   ] Logger: Purge 32 log files
+[INFO   ] Logger: Purge finished!
 [INFO   ] Factory: 184 symbols loaded
 [INFO   ] Image: Providers: img_tex, img_dds, img_sdl2, img_gif (img_pil, img_ffpyplayer ignored)
 [INFO   ] Text: Provider: sdl2
@@ -21,15 +24,24 @@
 [WARNING] Factory: Ignored class "BackgroundColor" re-declaration. Current -  module: None, cls: <class '__main__.BackgroundColor'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Widget, filename: /storage/emulated/0/Python/RSAchat/app.kv.
 [WARNING] Factory: Ignored class "BackgroundLabel" re-declaration. Current -  module: None, cls: <class '__main__.BackgroundLabel'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Label+BackgroundColor, filename: /storage/emulated/0/Python/RSAchat/app.kv.
 [WARNING] Factory: Ignored class "Message" re-declaration. Current -  module: None, cls: <class '__main__.Message'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: BackgroundLabel, filename: /storage/emulated/0/Python/RSAchat/app.kv.
-[WARNING] Factory: Ignored class "LeftMessage" re-declaration. Current -  module: None, cls: <class '__main__.LeftMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
-[WARNING] Factory: Ignored class "RightMessage" re-declaration. Current -  module: None, cls: <class '__main__.RightMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
-[WARNING] Deprecated property "<VariableListProperty name=padding_y>" of object "<kivy.uix.textinput.TextInput object at 0x789fd1bac0>" was accessed, it will be removed in a future version
+[WARNING] Factory: Ignored class "SendMessage" re-declaration. Current -  module: None, cls: <class '__main__.SendMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "RecvMessage" re-declaration. Current -  module: None, cls: <class '__main__.RecvMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "SysMessage" re-declaration. Current -  module: None, cls: <class '__main__.SysMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "SendButton" re-declaration. Current -  module: None, cls: <class '__main__.SendButton'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Button, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "BackgroundScroller" re-declaration. Current -  module: None, cls: <class '__main__.BackgroundScroller'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: ScrollView+BackgroundColor, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Deprecated property "<VariableListProperty name=padding_y>" of object "<kivy.uix.textinput.TextInput object at 0x789fa97e80>" was accessed, it will be removed in a future version
 [INFO   ] GL: NPOT texture support is available
 [WARNING] Base: Unknown <android> provider
 [INFO   ] Base: Start application main loop
 [INFO   ] Base: Leaving application in progress...
 [WARNING] stderr: Traceback (most recent call last):
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 39, in <module>
+[WARNING] stderr:   File "kivy/properties.pyx", line 860, in kivy.properties.ObservableDict.__getattr__
+[WARNING] stderr: KeyError: 'sm'
+[WARNING] stderr: 
+[WARNING] stderr: During handling of the above exception, another exception occurred:
+[WARNING] stderr: 
+[WARNING] stderr: Traceback (most recent call last):
+[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 111, in <module>
 [WARNING] stderr:     ChatApp().run()
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/app.py", line 855, in run
 [WARNING] stderr:     runTouchApp()
@@ -55,6 +67,13 @@
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/widget.py", line 549, in on_touch_down
 [WARNING] stderr:     if child.dispatch('on_touch_down', touch):
 [WARNING] stderr:   File "kivy/_event.pyx", line 707, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/screenmanager.py", line 1191, in on_touch_down
+[WARNING] stderr:     return super(ScreenManager, self).on_touch_down(touch)
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/widget.py", line 549, in on_touch_down
+[WARNING] stderr:     if child.dispatch('on_touch_down', touch):
+[WARNING] stderr:   File "kivy/_event.pyx", line 707, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/relativelayout.py", line 288, in on_touch_down
+[WARNING] stderr:     ret = super(RelativeLayout, self).on_touch_down(touch)
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/widget.py", line 549, in on_touch_down
 [WARNING] stderr:     if child.dispatch('on_touch_down', touch):
 [WARNING] stderr:   File "kivy/_event.pyx", line 707, in kivy._event.EventDispatcher.dispatch
@@ -65,8 +84,9 @@
 [WARNING] stderr:   File "kivy/_event.pyx", line 1098, in kivy._event.EventObservers._dispatch
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 64, in custom_callback
 [WARNING] stderr:     exec(__kvlang__.co_value, idmap)
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/app.kv", line 41, in <module>
-[WARNING] stderr:     on_press: root.sendMessage()
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 28, in sendMessage
-[WARNING] stderr:     msg=LeftMessage(text=msg)
-[WARNING] stderr: UnboundLocalError: local variable 'msg' referenced before assignment
+[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/app.kv", line 64, in <module>
+[WARNING] stderr:     on_press: root.screenMessages()
+[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 30, in screenMessages
+[WARNING] stderr:     self.ids.sm.current = "messages"
+[WARNING] stderr:   File "kivy/properties.pyx", line 863, in kivy.properties.ObservableDict.__getattr__
+[WARNING] stderr: AttributeError: 'super' object has no attribute '__getattr__'

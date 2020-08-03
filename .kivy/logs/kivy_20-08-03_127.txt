@@ -1,4 +1,4 @@
-[INFO   ] Logger: Record log in /storage/emulated/0/Python/RSAchat/.kivy/logs/kivy_20-08-03_33.txt
+[INFO   ] Logger: Record log in /storage/emulated/0/Python/RSAchat/.kivy/logs/kivy_20-08-03_127.txt
 [INFO   ] Kivy: v1.11.1
 [INFO   ] Kivy: Installed at "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/__init__.py"
 [INFO   ] Python: v3.8.3 (default, May 27 2020, 02:08:17) 
@@ -26,9 +26,27 @@
 [WARNING] Factory: Ignored class "SysMessage" re-declaration. Current -  module: None, cls: <class '__main__.SysMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
 [WARNING] Factory: Ignored class "SendButton" re-declaration. Current -  module: None, cls: <class '__main__.SendButton'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Button, filename: /storage/emulated/0/Python/RSAchat/app.kv.
 [WARNING] Factory: Ignored class "BackgroundScroller" re-declaration. Current -  module: None, cls: <class '__main__.BackgroundScroller'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: ScrollView+BackgroundColor, filename: /storage/emulated/0/Python/RSAchat/app.kv.
-[WARNING] Deprecated property "<VariableListProperty name=padding_y>" of object "<kivy.uix.textinput.TextInput object at 0x789f52b3a0>" was accessed, it will be removed in a future version
-[INFO   ] GL: NPOT texture support is available
-[WARNING] Base: Unknown <android> provider
-[INFO   ] Base: Start application main loop
-[INFO   ] Base: Leaving application in progress...
-[INFO   ] WindowSDL: exiting mainloop and closing.
+[WARNING] stderr: Traceback (most recent call last):
+[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 107, in <module>
+[WARNING] stderr:     ChatApp().run()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/app.py", line 829, in run
+[WARNING] stderr:     root = self.build()
+[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 104, in build
+[WARNING] stderr:     return AppChat()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/boxlayout.py", line 145, in __init__
+[WARNING] stderr:     super(BoxLayout, self).__init__(**kwargs)
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/layout.py", line 76, in __init__
+[WARNING] stderr:     super(Layout, self).__init__(**kwargs)
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/widget.py", line 359, in __init__
+[WARNING] stderr:     self.apply_class_lang_rules(
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/widget.py", line 467, in apply_class_lang_rules
+[WARNING] stderr:     Builder.apply(
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 536, in apply
+[WARNING] stderr:     self._apply_rule(
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 658, in _apply_rule
+[WARNING] stderr:     self._apply_rule(
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 616, in _apply_rule
+[WARNING] stderr:     cls = Factory_get(cname)
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/factory.py", line 131, in __getattr__
+[WARNING] stderr:     raise FactoryException('Unknown class <%s>' % name)
+[WARNING] stderr: kivy.factory.FactoryException: Unknown class <MenuScreen>

@@ -1,20 +1,35 @@
-<AppLayout>
+<AppChat>:
 	orientation:"vertical"
-    BoxLayout:
-    	size_hint:(1,0.2)
-    	Button:
-    		text:"A"
-    	Button:
-    		text:"B"
-    	Button:
-    		text:"C"
-    	Button:
-    		text:"D"
-    ScrollView:
+	
+	ActionBar:
+	    pos_hint: {'top':1}
+	    ActionView:
+	        use_separator: True
+        	ActionPrevious:
+            	title: 'App'
+            	with_previous: False
+        	ActionButton:
+            	text: 'Disconnect'
+        	ActionGroup:
+            	text: 'Settings' 
+            	mode: 'spinner'
+            	ActionButton:
+                	text: 'Group'
+            	ActionButton:
+                	text: 'System'
+            	ActionButton:
+                	text: 'Custom'
+            	ActionButton:
+                	text: 'Infos'
+                
+	ScreenManager:
+		id:sm
+		MessagesScreen:
+		
+<MessagesScreen>
+	name:"messages"
+    BackgroundScroller:
     	id:scroller
-    	effect_cls:"OpacityScrollEffect"
-    	do_scroll_x:False
-    	do_scroll_y:True
     	GridLayout:
     		size_hint:(1,None)
     		height:self.minimum_height
@@ -35,10 +50,8 @@
     		multiline:False
     		cursor_color:(0,0,0,0)
     		hint_text_color:(0.5,0.5,0.5,0.4)
-    	Button:
-    		size_hint:(0.2,1)
-        	text: "Send"
-        	on_press: root.sendMessage()
+    	SendButton:
+    		on_press: root.sendMessage()
 
 <BackgroundColor@Widget>
     background_color:(1, 1, 1, 1)
@@ -56,19 +69,30 @@
 	padding_x:50
 	padding_y:30
 	valign:'bottom'
+	halign:'left'
 	text_size:(self.width, None)
     size_hint:(1, None)
     height: self.texture_size[1]
 	
-<LeftMessage@Message>
-	halign:'left'
-	background_color:(0.4, 0.2, 0.7,1)
+<SendMessage@Message>
+	color:(self.fnt_r, self.fnt_g, self.fnt_b, self.fnt_a)
+	background_color:(self.bkg_r, self.bkg_g, self.bkg_b, self.bkg_a)
 	
-<RightMessage@Message>
-	halign:'right'
+<RecvMessage@Message>
 	background_color:(0.1, 0.4, 0.6, 1)
 	
-<CenterMessage@Message>
+<SysMessage@Message>
 	halign:'center'
 	background_color:(0.1, 0.4, 0.6, 1)
-
+	
+<SendButton@Button>
+	text: "Send"
+	size_hint:(0.2,1)
+	color:(self.fnt_r, self.fnt_g, self.fnt_b, self.fnt_a)
+	background_color:(self.bkg_r, self.bkg_g, self.bkg_b, self.bkg_a)
+	
+<BackgroundScroller@ScrollView+BackgroundColor>
+	effect_cls:"OpacityScrollEffect"
+    do_scroll_x:False
+    do_scroll_y:True
+    background_color:(self.bkg_r, self.bkg_g, self.bkg_b, self.bkg_a)

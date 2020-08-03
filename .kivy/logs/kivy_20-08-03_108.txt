@@ -18,57 +18,17 @@
 [INFO   ] GL: Texture max units <16>
 [INFO   ] Window: auto add sdl2 input provider
 [INFO   ] Window: virtual keyboard not allowed, single mode, not docked
-[WARNING] stderr: Traceback (most recent call last):
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 700, in _apply_rule
-[WARNING] stderr:     setattr(widget_set, key, value)
-[WARNING] stderr:   File "kivy/weakproxy.pyx", line 35, in kivy.weakproxy.WeakProxy.__setattr__
-[WARNING] stderr:   File "kivy/properties.pyx", line 497, in kivy.properties.Property.__set__
-[WARNING] stderr:   File "kivy/properties.pyx", line 1353, in kivy.properties.ReferenceListProperty.set
-[WARNING] stderr:   File "kivy/properties.pyx", line 1337, in kivy.properties.ReferenceListProperty.convert
-[WARNING] stderr: ValueError: LeftMessage.padding must be a list or a tuple
-[WARNING] stderr: 
-[WARNING] stderr: During handling of the above exception, another exception occurred:
-[WARNING] stderr: 
-[WARNING] stderr: Traceback (most recent call last):
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 16, in <module>
-[WARNING] stderr:     ChatApp().run()
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/app.py", line 829, in run
-[WARNING] stderr:     root = self.build()
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 13, in build
-[WARNING] stderr:     return AppLayout()
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/boxlayout.py", line 145, in __init__
-[WARNING] stderr:     super(BoxLayout, self).__init__(**kwargs)
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/layout.py", line 76, in __init__
-[WARNING] stderr:     super(Layout, self).__init__(**kwargs)
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/widget.py", line 359, in __init__
-[WARNING] stderr:     self.apply_class_lang_rules(
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/widget.py", line 467, in apply_class_lang_rules
-[WARNING] stderr:     Builder.apply(
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 536, in apply
-[WARNING] stderr:     self._apply_rule(
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 658, in _apply_rule
-[WARNING] stderr:     self._apply_rule(
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 656, in _apply_rule
-[WARNING] stderr:     child.apply_class_lang_rules(
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/widget.py", line 467, in apply_class_lang_rules
-[WARNING] stderr:     Builder.apply(
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 536, in apply
-[WARNING] stderr:     self._apply_rule(
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 705, in _apply_rule
-[WARNING] stderr:     raise BuilderException(rule.ctx, rule.line,
-[WARNING] stderr: kivy.lang.builder.BuilderException: Parser: File "/storage/emulated/0/Python/RSAchat/app.kv", line 55:
-[WARNING] stderr: ...
-[WARNING] stderr:      53:	valign:'bottom'
-[WARNING] stderr:      54:	text_size:self.size
-[WARNING] stderr: >>   55:	padding:30
-[WARNING] stderr:      56:	size_hint:(1,None)
-[WARNING] stderr:      57:	size:(0,200)
-[WARNING] stderr: ...
-[WARNING] stderr: ValueError: LeftMessage.padding must be a list or a tuple
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 700, in _apply_rule
-[WARNING] stderr:     setattr(widget_set, key, value)
-[WARNING] stderr:   File "kivy/weakproxy.pyx", line 35, in kivy.weakproxy.WeakProxy.__setattr__
-[WARNING] stderr:   File "kivy/properties.pyx", line 497, in kivy.properties.Property.__set__
-[WARNING] stderr:   File "kivy/properties.pyx", line 1353, in kivy.properties.ReferenceListProperty.set
-[WARNING] stderr:   File "kivy/properties.pyx", line 1337, in kivy.properties.ReferenceListProperty.convert
-[WARNING] stderr: 
+[WARNING] Factory: Ignored class "BackgroundColor" re-declaration. Current -  module: None, cls: <class '__main__.BackgroundColor'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Widget, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "BackgroundLabel" re-declaration. Current -  module: None, cls: <class '__main__.BackgroundLabel'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Label+BackgroundColor, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "Message" re-declaration. Current -  module: None, cls: <class '__main__.Message'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: BackgroundLabel, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "SendMessage" re-declaration. Current -  module: None, cls: <class '__main__.SendMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "RecvMessage" re-declaration. Current -  module: None, cls: <class '__main__.RecvMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "SysMessage" re-declaration. Current -  module: None, cls: <class '__main__.SysMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "SendButton" re-declaration. Current -  module: None, cls: <class '__main__.SendButton'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Button, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "BackgroundScroller" re-declaration. Current -  module: None, cls: <class '__main__.BackgroundScroller'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: ScrollView+BackgroundColor, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Deprecated property "<VariableListProperty name=padding_y>" of object "<kivy.uix.textinput.TextInput object at 0x789fd8b9a0>" was accessed, it will be removed in a future version
+[INFO   ] GL: NPOT texture support is available
+[WARNING] Base: Unknown <android> provider
+[INFO   ] Base: Start application main loop
+[INFO   ] Base: Leaving application in progress...
+[INFO   ] WindowSDL: exiting mainloop and closing.

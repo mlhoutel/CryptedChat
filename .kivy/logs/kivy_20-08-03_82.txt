@@ -1,4 +1,4 @@
-[INFO   ] Logger: Record log in /storage/emulated/0/Python/RSAchat/.kivy/logs/kivy_20-08-03_131.txt
+[INFO   ] Logger: Record log in /storage/emulated/0/Python/RSAchat/.kivy/logs/kivy_20-08-03_82.txt
 [INFO   ] Kivy: v1.11.1
 [INFO   ] Kivy: Installed at "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/__init__.py"
 [INFO   ] Python: v3.8.3 (default, May 27 2020, 02:08:17) 
@@ -21,9 +21,10 @@
 [WARNING] Factory: Ignored class "BackgroundColor" re-declaration. Current -  module: None, cls: <class '__main__.BackgroundColor'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Widget, filename: /storage/emulated/0/Python/RSAchat/app.kv.
 [WARNING] Factory: Ignored class "BackgroundLabel" re-declaration. Current -  module: None, cls: <class '__main__.BackgroundLabel'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Label+BackgroundColor, filename: /storage/emulated/0/Python/RSAchat/app.kv.
 [WARNING] Factory: Ignored class "Message" re-declaration. Current -  module: None, cls: <class '__main__.Message'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: BackgroundLabel, filename: /storage/emulated/0/Python/RSAchat/app.kv.
-[WARNING] Factory: Ignored class "LeftMessage" re-declaration. Current -  module: None, cls: <class '__main__.LeftMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
-[WARNING] Factory: Ignored class "RightMessage" re-declaration. Current -  module: None, cls: <class '__main__.RightMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
-[WARNING] Deprecated property "<VariableListProperty name=padding_y>" of object "<kivy.uix.textinput.TextInput object at 0x789fd97760>" was accessed, it will be removed in a future version
+[WARNING] Factory: Ignored class "SendMessage" re-declaration. Current -  module: None, cls: <class '__main__.SendMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "RecvMessage" re-declaration. Current -  module: None, cls: <class '__main__.RecvMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "SysMessage" re-declaration. Current -  module: None, cls: <class '__main__.SysMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Deprecated property "<VariableListProperty name=padding_y>" of object "<kivy.uix.textinput.TextInput object at 0x789fd1abe0>" was accessed, it will be removed in a future version
 [INFO   ] GL: NPOT texture support is available
 [WARNING] Base: Unknown <android> provider
 [INFO   ] Base: Start application main loop
@@ -31,10 +32,9 @@
 [WARNING] stderr: Traceback (most recent call last):
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 249, in create_handler
 [WARNING] stderr:     return eval(value, idmap), bound_list
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/app.kv", line 54, in <module>
-[WARNING] stderr:     padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
-[WARNING] stderr:   File "kivy/weakproxy.pyx", line 32, in kivy.weakproxy.WeakProxy.__getattr__
-[WARNING] stderr: AttributeError: 'LeftMessage' object has no attribute '_lines'
+[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/app.kv", line 65, in <module>
+[WARNING] stderr:     background_color:(fcol.r, 0.2, 0.7,1)
+[WARNING] stderr: NameError: name 'fcol' is not defined
 [WARNING] stderr: 
 [WARNING] stderr: During handling of the above exception, another exception occurred:
 [WARNING] stderr: 
@@ -43,26 +43,25 @@
 [WARNING] stderr:     value, bound = create_handler(
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 252, in create_handler
 [WARNING] stderr:     raise BuilderException(rule.ctx, rule.line,
-[WARNING] stderr: kivy.lang.builder.BuilderException: Parser: File "/storage/emulated/0/Python/RSAchat/app.kv", line 54:
+[WARNING] stderr: kivy.lang.builder.BuilderException: Parser: File "/storage/emulated/0/Python/RSAchat/app.kv", line 65:
 [WARNING] stderr: ...
-[WARNING] stderr:      52:	text_size:self.size
-[WARNING] stderr:      53:	padding_x:50
-[WARNING] stderr: >>   54:	padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
-[WARNING] stderr:      55:	size_hint:(1,None)
-[WARNING] stderr:      56:	size:(0,200)
+[WARNING] stderr:      63:	
+[WARNING] stderr:      64:<SendMessage@Message>
+[WARNING] stderr: >>   65:	background_color:(fcol.r, 0.2, 0.7,1)
+[WARNING] stderr:      66:	
+[WARNING] stderr:      67:<RecvMessage@Message>
 [WARNING] stderr: ...
-[WARNING] stderr: AttributeError: 'LeftMessage' object has no attribute '_lines'
+[WARNING] stderr: NameError: name 'fcol' is not defined
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 249, in create_handler
 [WARNING] stderr:     return eval(value, idmap), bound_list
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/app.kv", line 54, in <module>
-[WARNING] stderr:     padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
-[WARNING] stderr:   File "kivy/weakproxy.pyx", line 32, in kivy.weakproxy.WeakProxy.__getattr__
+[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/app.kv", line 65, in <module>
+[WARNING] stderr:     background_color:(fcol.r, 0.2, 0.7,1)
 [WARNING] stderr: 
 [WARNING] stderr: 
 [WARNING] stderr: During handling of the above exception, another exception occurred:
 [WARNING] stderr: 
 [WARNING] stderr: Traceback (most recent call last):
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 37, in <module>
+[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 51, in <module>
 [WARNING] stderr:     ChatApp().run()
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/app.py", line 855, in run
 [WARNING] stderr:     runTouchApp()
@@ -98,10 +97,10 @@
 [WARNING] stderr:   File "kivy/_event.pyx", line 1098, in kivy._event.EventObservers._dispatch
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 64, in custom_callback
 [WARNING] stderr:     exec(__kvlang__.co_value, idmap)
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/app.kv", line 36, in <module>
+[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/app.kv", line 41, in <module>
 [WARNING] stderr:     on_press: root.sendMessage()
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 28, in sendMessage
-[WARNING] stderr:     self.ids.messages.add_widget(LeftMessage(text=msg))
+[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 40, in sendMessage
+[WARNING] stderr:     msg=SendMessage(text=txt)
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/label.py", line 318, in __init__
 [WARNING] stderr:     super(Label, self).__init__(**kwargs)
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/uix/widget.py", line 359, in __init__
@@ -112,28 +111,27 @@
 [WARNING] stderr:     self._apply_rule(
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 705, in _apply_rule
 [WARNING] stderr:     raise BuilderException(rule.ctx, rule.line,
-[WARNING] stderr: kivy.lang.builder.BuilderException: Parser: File "/storage/emulated/0/Python/RSAchat/app.kv", line 54:
+[WARNING] stderr: kivy.lang.builder.BuilderException: Parser: File "/storage/emulated/0/Python/RSAchat/app.kv", line 65:
 [WARNING] stderr: ...
-[WARNING] stderr:      52:	text_size:self.size
-[WARNING] stderr:      53:	padding_x:50
-[WARNING] stderr: >>   54:	padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
-[WARNING] stderr:      55:	size_hint:(1,None)
-[WARNING] stderr:      56:	size:(0,200)
+[WARNING] stderr:      63:	
+[WARNING] stderr:      64:<SendMessage@Message>
+[WARNING] stderr: >>   65:	background_color:(fcol.r, 0.2, 0.7,1)
+[WARNING] stderr:      66:	
+[WARNING] stderr:      67:<RecvMessage@Message>
 [WARNING] stderr: ...
-[WARNING] stderr: BuilderException: Parser: File "/storage/emulated/0/Python/RSAchat/app.kv", line 54:
+[WARNING] stderr: BuilderException: Parser: File "/storage/emulated/0/Python/RSAchat/app.kv", line 65:
 [WARNING] stderr: ...
-[WARNING] stderr:      52:	text_size:self.size
-[WARNING] stderr:      53:	padding_x:50
-[WARNING] stderr: >>   54:	padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
-[WARNING] stderr:      55:	size_hint:(1,None)
-[WARNING] stderr:      56:	size:(0,200)
+[WARNING] stderr:      63:	
+[WARNING] stderr:      64:<SendMessage@Message>
+[WARNING] stderr: >>   65:	background_color:(fcol.r, 0.2, 0.7,1)
+[WARNING] stderr:      66:	
+[WARNING] stderr:      67:<RecvMessage@Message>
 [WARNING] stderr: ...
-[WARNING] stderr: AttributeError: 'LeftMessage' object has no attribute '_lines'
+[WARNING] stderr: NameError: name 'fcol' is not defined
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 249, in create_handler
 [WARNING] stderr:     return eval(value, idmap), bound_list
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/app.kv", line 54, in <module>
-[WARNING] stderr:     padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
-[WARNING] stderr:   File "kivy/weakproxy.pyx", line 32, in kivy.weakproxy.WeakProxy.__getattr__
+[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/app.kv", line 65, in <module>
+[WARNING] stderr:     background_color:(fcol.r, 0.2, 0.7,1)
 [WARNING] stderr: 
 [WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 690, in _apply_rule
 [WARNING] stderr:     value, bound = create_handler(

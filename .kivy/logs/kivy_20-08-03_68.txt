@@ -1,4 +1,4 @@
-[INFO   ] Logger: Record log in /storage/emulated/0/Python/RSAchat/.kivy/logs/kivy_20-08-03_18.txt
+[INFO   ] Logger: Record log in /storage/emulated/0/Python/RSAchat/.kivy/logs/kivy_20-08-03_68.txt
 [INFO   ] Kivy: v1.11.1
 [INFO   ] Kivy: Installed at "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/__init__.py"
 [INFO   ] Python: v3.8.3 (default, May 27 2020, 02:08:17) 
@@ -19,6 +19,8 @@
 [INFO   ] Window: auto add sdl2 input provider
 [INFO   ] Window: virtual keyboard not allowed, single mode, not docked
 [WARNING] stderr: Traceback (most recent call last):
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 106, in <module>
-[WARNING] stderr:     sm.add_widget(MessagesScreen(name="scr_messages"))
-[WARNING] stderr: NameError: name 'MessagesScreen' is not defined
+[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 27, in <module>
+[WARNING] stderr:     class SendMessage(Message):
+[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 28, in SendMessage
+[WARNING] stderr:     this.col=Color(1,1,1,0.5)
+[WARNING] stderr: TypeError: __init__() takes 4 positional arguments but 5 were given

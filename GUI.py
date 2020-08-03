@@ -23,9 +23,11 @@ class RightMessage(Message):
 	
 class AppLayout(BoxLayout):
 	def sendMessage(self):
-		msg=self.ids.textbox.text
-		if msg:
-			self.ids.messages.add_widget(LeftMessage(text=msg))
+		txt=self.ids.textbox.text
+		if txt:
+			msg=LeftMessage(text=txt)
+			self.ids.messages.add_widget(msg)
+			self.ids.scroller.scroll_to(msg)
 			self.ids.textbox.text=''
 
 class ChatApp(App):

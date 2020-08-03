@@ -10,13 +10,16 @@
     		text:"C"
     	Button:
     		text:"D"
-    BoxLayout:
-    	id:messages
-    	orientation:"vertical"
-    	LeftMessage:
-        	text:"testa"
-        RightMessage:
-        	text:"testa"
+    ScrollView:
+    	id:scroller
+    	effect_cls:"OpacityScrollEffect"
+    	do_scroll_x:False
+    	do_scroll_y:True
+    	GridLayout:
+    		size_hint:(1,None)
+    		height:self.minimum_height
+    		id:messages
+    		cols:1
         
     BoxLayout:
     	orientation:"horizontal"
@@ -50,12 +53,12 @@
     background_color:(0, 0, 0, 0)
 
 <Message@BackgroundLabel>
-	valign:'bottom'
-	text_size:self.size
-	padding_x:30
+	padding_x:50
 	padding_y:30
-	size_hint:(1,None)
-	size:(0,200)
+	valign:'bottom'
+	text_size:(self.width, None)
+    size_hint:(1, None)
+    height: self.texture_size[1]
 	
 <LeftMessage@Message>
 	halign:'left'
@@ -63,5 +66,9 @@
 	
 <RightMessage@Message>
 	halign:'right'
+	background_color:(0.1, 0.4, 0.6, 1)
+	
+<CenterMessage@Message>
+	halign:'center'
 	background_color:(0.1, 0.4, 0.6, 1)
 

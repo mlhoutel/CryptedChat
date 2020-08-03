@@ -7,33 +7,27 @@
 [INFO   ] Factory: 184 symbols loaded
 [INFO   ] Image: Providers: img_tex, img_dds, img_sdl2, img_gif (img_pil, img_ffpyplayer ignored)
 [INFO   ] Text: Provider: sdl2
-[WARNING] stderr: Traceback (most recent call last):
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 15, in <module>
-[WARNING] stderr:     ChatApp().run()
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/app.py", line 829, in run
-[WARNING] stderr:     root = self.build()
-[WARNING] stderr:   File "/storage/emulated/0/Python/RSAchat/GUI.py", line 11, in build
-[WARNING] stderr:     self.load_kv('app.kv')
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/app.py", line 599, in load_kv
-[WARNING] stderr:     root = Builder.load_file(rfilename)
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 301, in load_file
-[WARNING] stderr:     return self.load_string(data, **kwargs)
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/builder.py", line 368, in load_string
-[WARNING] stderr:     parser = Parser(content=string, filename=fn)
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/parser.py", line 401, in __init__
-[WARNING] stderr:     self.parse(content)
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/parser.py", line 510, in parse
-[WARNING] stderr:     objects, remaining_lines = self.parse_level(0, lines)
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/parser.py", line 613, in parse_level
-[WARNING] stderr:     _objects, _lines = self.parse_level(
-[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/aarch64-linux-android/lib/python3.8/site-packages/kivy/lang/parser.py", line 623, in parse_level
-[WARNING] stderr:     raise ParserException(self, ln,
-[WARNING] stderr: kivy.lang.parser.ParserException: Parser: File "/storage/emulated/0/Python/RSAchat/app.kv", line 4:
-[WARNING] stderr: ...
-[WARNING] stderr:       2:	orientation:"vertical"
-[WARNING] stderr:       3:    BoxLayout:
-[WARNING] stderr: >>    4:    	size_hint ("None","None")
-[WARNING] stderr:       5:    	Button:
-[WARNING] stderr:       6:    		text:"A"
-[WARNING] stderr: ...
-[WARNING] stderr: Invalid property name
+[INFO   ] Window: Provider: sdl2
+[INFO   ] GL: Using the "OpenGL ES 2" graphics system
+[INFO   ] GL: Backend used <sdl2>
+[INFO   ] GL: OpenGL version <b'OpenGL ES 3.2 v1.r12p1-04bet0.76b1d268c59a490265a02c702c8aa55c'>
+[INFO   ] GL: OpenGL vendor <b'ARM'>
+[INFO   ] GL: OpenGL renderer <b'Mali-T880'>
+[INFO   ] GL: OpenGL parsed version: 3, 2
+[INFO   ] GL: Texture max size <8192>
+[INFO   ] GL: Texture max units <16>
+[INFO   ] Window: auto add sdl2 input provider
+[INFO   ] Window: virtual keyboard not allowed, single mode, not docked
+[WARNING] Factory: Ignored class "BackgroundColor" re-declaration. Current -  module: None, cls: <class '__main__.BackgroundColor'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Widget, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "BackgroundLabel" re-declaration. Current -  module: None, cls: <class '__main__.BackgroundLabel'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Label+BackgroundColor, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "Message" re-declaration. Current -  module: None, cls: <class '__main__.Message'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: BackgroundLabel, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "LeftMessage" re-declaration. Current -  module: None, cls: <class '__main__.LeftMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Factory: Ignored class "RightMessage" re-declaration. Current -  module: None, cls: <class '__main__.RightMessage'>, baseclass: None, filename: None. Ignored -  module: None, cls: None, baseclass: Message, filename: /storage/emulated/0/Python/RSAchat/app.kv.
+[WARNING] Deprecated property "<VariableListProperty name=padding_y>" of object "<kivy.uix.textinput.TextInput object at 0x789fd7e7c0>" was accessed, it will be removed in a future version
+[INFO   ] GL: NPOT texture support is available
+[WARNING] Base: Unknown <android> provider
+[INFO   ] Base: Start application main loop
+[CRITICAL] Clock: Warning, too much iteration done before the next frame. Check your code, or increase the Clock.max_iteration attribute
+[CRITICAL] Clock: Warning, too much iteration done before the next frame. Check your code, or increase the Clock.max_iteration attribute
+[INFO   ] Base: Leaving application in progress...
+[INFO   ] WindowSDL: exiting mainloop and closing.

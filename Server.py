@@ -24,7 +24,7 @@ server.listen(10) # listen for 10 connections
 clients = [] 
 
 def clientthread(conn, addr): 
-    message = "Welcome to this chatroom " + addr[0]
+    message = "<system>Welcome to this chatroom " + addr[0] + "<system>"
     conn.send(message.encode('utf-8')) 
 
     while True: 

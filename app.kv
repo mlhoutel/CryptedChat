@@ -35,7 +35,7 @@
                 text: 'Infos'
             ActionButton:
             	text:'Quit'
-            	on_press: app.get_running_app().stop()
+            	on_press: app.root.quitApplication(app.get_running_app())
 
 <MessagesScreen>
 	name:"messages"
@@ -94,6 +94,7 @@
 		BoxLayout:
 			orientation:"vertical"
 			Label
+				id:create_label
 				text:"Create a room"
 			BoxLayout:
 				orientation:"horizontal"
@@ -101,17 +102,20 @@
 					text:"Name"
 				TextBox:
 					hint_text:"Your name"
+					id:create_name
 			BoxLayout:
 				orientation:"horizontal"
 				MenuLabel:
 					text:"Limit"
 				TextBox:
 					hint_text:"20 (pers.)"
+					id:create_limit
 			BoxLayout:
 				orientation:"horizontal"
 				MenuLabel:
 					text:"Port"
 				TextBox:
+					id:create_port
 					hint_text:"8027"
 			Button:
 				text:"Create Room"

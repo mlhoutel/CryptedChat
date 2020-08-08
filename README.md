@@ -1,4 +1,4 @@
-# RSA chat
+# Crypted chat
 This application is the result of a challenge to develop a program entirely on mobile.
 I choosed to train my network and cryptography skill with a simple peer to peer crypted message box.
 

@@ -93,7 +93,6 @@ class TextBox(TextInput):
 	pass
 class MenuLabel(Label):
 	pass
-
 class ScreenManager(ScreenManager):
 	pass
 class MenuScreen(Screen):
@@ -102,7 +101,6 @@ class MessagesScreen(Screen):
 	pass
 
 class AppChat(BoxLayout):
-	# Server initialisation
 	server = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 	IP_address=str("127.0.0.1")
 	Port=int(8027)
@@ -110,129 +108,149 @@ class AppChat(BoxLayout):
 	threads=[]
 	clients=[]
 	Admin=False
+	Menu=None
+	Messages=None
 	
+	def addSendMessage(self, message):
+		msg=SendMessage(text=message)
+		self.Messages.ids.messages.add_widget(msg)
+		self.Messages.ids.scroller.scroll_to(msg)
+		self.Messages.ids.textbox.text=""
+	
+	def addRecvMessage(self, message):
+		self.Messages.ids.messages.add_widget(RecvMessage(text=message))
+	
+	def addSysMessage(self, message):
+		self.Messages.ids.messages.add_widget(SysMessage(text=message))
+
 	def receptThread(self):
+		# Reception loop
 		while True:
 			if self.stop_threads:
 				break
+
 			sockets_list = [sys.stdin, self.server] 
 			read_sockets, write_socket, error_socket = select.select(sockets_list,[],[])
+			# Read all the received sockets
 			for socks in read_sockets:
-				if socks == self.server:
-				   	data = socks.recv(2048)
-				   	if data:
-				   		message = data.decode('utf-8','ignore')
-				   		if message.startswith('<system>'):
-				   			Messages.ids.messages.add_widget(SysMessage(text=message))
-				   		else:
-				   			Messages.ids.messages.add_widget(RecvMessage(text=message))
-				   	else:
-				   		self.disconnectServer()
+			   	data = socks.recv(2048)
+			   	if data:
+			   		# Display the received message
+			   		message = data.decode('utf-8','ignore')
+			   		if message.startswith('<system>'):
+			   			self.addSysMessage(message)
+			   		else:
+			   			self.addRecvMessage(message)
+			   	else:
+			   		#Server closed
+			   		break
+		# Notify the server closure
+		self.addSysMessage("<system>Server Closed<system>")
+		self.disconnectServer()
 				   		
 	def serverThread(self):
-		Menu=self.ids.scr_menu
-		Messages=self.ids.scr_messages
-				
-		# server initialisation
+		# Create the server/Test if the port is available
 		self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 		try:
 			self.server.bind((self.IP_address, self.Port))
-			bind_msg="<system>Binded["+str(self.IP_address)+":"+str(self.Port)+"]<system>"
-			Messages.ids.messages.add_widget(SysMessage(text=bind_msg))
+			self.addSysMessage("<system>Binded["+str(self.IP_address)+":"+str(self.Port)+"]<system>")
 		except:
-			Menu.ids.create_label.text="Create a room ("+str(self.IP_address)+":"+str(self.Port)+" already binded)"
+			self.Menu.ids.create_label.text="Create a room ("+str(self.IP_address)+":"+str(self.Port)+" already binded)"
 			self.disconnectServer()
-			
-		temp_limit=Menu.ids.create_limit.text.rstrip()
+		
+		# Setup the server limits
+		temp_limit=self.Menu.ids.create_limit.text.rstrip()
 		if temp_limit:
 			self.server.listen(int(temp_limit))
 		else:
 			self.server.listen(int(20))
+
+		# Server loop
 		try:
 			while True:
-			  		if self.stop_threads:
-			  			break
-			  		conn, addr = self.server.accept()
-			  		self.clients.append(conn)
-			  		conn_msg="<system>" + str(addr[0]) +" connected<system>"
-			  		Messages.ids.messages.add_widget(SysMessage(text=conn_msg))
-			  		temp_thread=threading.Thread(target=self.clientThread, args=(conn,addr))
-			  		temp_thread.start()
-			  		self.threads.append(temp_thread)
-			  		
-			conn.close() 
-			self.disconnectServer()
+				if self.stop_threads:
+					break
+				# Create and notify the connexion
+				conn, addr = self.server.accept()
+				self.clients.append(conn)
+				self.addSysMessage("<system>"+str(addr[0])+" connected<system>")
+
+				# Add the client Thread
+				temp_thread=threading.Thread(target=self.clientThread, args=(conn,addr))
+				temp_thread.start()
+				self.threads.append(temp_thread)
 		except:
-			self.disconnectServer()
-			
-		
+			pass
+		# Disconnect the server and close the threads
+		self.disconnectServer()
+				
 	def clientThread(self, conn, addr):
 		keep_connection=True
-		Menu=self.ids.scr_menu
-		Messages=self.ids.scr_messages
-		
 		message = "<system>Welcome to this chatroom " + str(addr[0]) + "<system>"
 		conn.send(message.encode('utf-8'))
+
+		# Client loop
 		while keep_connection:
-		       	if self.stop_threads:
-		       		break
-		       	try:
-		       	   data = conn.recv(2048)
-		       	   if data:
-		       	       message = data.decode('utf-8','ignore')
-		       	       recv_msg="<" + str(addr[0]) + "> " + message.rstrip()
-		       	       Messages.ids.messages.add_widget(RecvMessage(text=recv_msg))
-		       	       self.broadcast(recv_msg, conn)
-		       	   else:
-		       	    dec_msg="<system> " + str(addr[0]) + " disconnected<system>"
-		       	    Messages.ids.messages.add_widget(SysMessage(text=dec_msg))
-		       	    self.remove(conn)
-		       	    keep_connection=False
-		       	    
-		       	except:
-		       	   # if error close connection
-		       	   self.disconnectServer()
+			if self.stop_threads:
+				break
+			try:
+				data = conn.recv(2048)
+				if data:
+				   message = data.decode('utf-8','ignore')
+				   recv_msg="<"+str(addr[0])+"> "+message.rstrip()
+				   self.addRecvMessage(recv_msg)
+				   self.broadcast(recv_msg.encode('utf-8'), conn)
+				else:
+					dec_msg="<system> "+str(addr[0])+" disconnected<system>"
+					self.addSysMessage(dec_msg)
+					#self.remove(conn)
+					conn.shutdown(2)
+					conn.close()
+					keep_connection=False
+			except:
+				pass
+		self.disconnectServer()
 	
 	def broadcast(self, message, conn):
-	    for client in self.clients: 
-	        if client!=conn: 
-	            try: 
-	                client.send(message) 
-	            except: 
-	            	#self.disconnectServer()
-	               self.remove(client) 
+		for client in self.clients: 
+			if client!=conn: 
+				try:
+					client.sendall(message.encode('utf-8')) 
+				except:
+					continue
+					#self.remove(client) 
 	
 	def remove(self,conn):
-	    pass
 	    if conn in self.clients:
 	        conn.close()
 	        self.clients.remove(conn)
         
 	def joinRoom(self):
-		Menu=self.ids.scr_menu
-		Messages=self.ids.scr_messages
+		self.Menu=self.ids.scr_menu
+		self.Messages=self.ids.scr_messages
 		try:
-			temp_ip=Menu.ids.join_ip.text.rstrip()
+			temp_ip=self.Menu.ids.join_ip.text.rstrip()
 			if temp_ip:
 				self.IP_address=str(temp_ip)
 				
-			temp_port=Menu.ids.join_port.text.rstrip()
+			temp_port=self.Menu.ids.join_port.text.rstrip()
 			if temp_port:
 				self.Port=int(temp_port)
 				
 			# Server connection
 			self.server.connect((self.IP_address,self.Port))
 			# To fix: when right ip and port but no server freeze
-			
 			self.ids.sm.transition.direction = 'left'
 			self.ids.sm.current = "messages"
 			
-			Messages.ids.messages.add_widget(SysMessage(text="Connected ("+str(self.IP_address)+":"+str(self.Port)+")"))
+			self.addSysMessage("Connected ("+str(self.IP_address)+":"+str(self.Port)+")")
+
+			# Add the reception thread
 			temp_thread=threading.Thread(target=receptThread, args=())
 			temp_thread.start()
 			self.threads.append(temp_thread)
 		except:
-			Menu.ids.join_label.text="Join a room (Can't reach "+str(self.IP_address)+":"+str(self.Port)+")"
+			self.Menu.ids.join_label.text="Join a room (Can't reach "+str(self.IP_address)+":"+str(self.Port)+")"
 	
 	def get_ip(self):
 	   	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -246,15 +264,17 @@ class AppChat(BoxLayout):
 	   	return IP
     	
 	def createRoom(self):
-		Menu=self.ids.scr_menu
-		Messages=self.ids.scr_messages
+		self.Menu=self.ids.scr_menu
+		self.Messages=self.ids.scr_messages
+
 		host_ip = self.get_ip()
 		try:
 			self.IP_address=str(host_ip)
-			temp_port=Menu.ids.create_port.text.rstrip()
+			temp_port=self.Menu.ids.create_port.text.rstrip()
 			if temp_port:
 				self.Port=int(temp_port)
 			
+			# Add the server thread
 			temp_thread=threading.Thread(target=self.serverThread, args=())
 			temp_thread.start()
 			self.threads.append(temp_thread)
@@ -263,28 +283,25 @@ class AppChat(BoxLayout):
 			self.ids.sm.current = "messages"
 			self.Admin=True
 		except:
-			Menu.ids.create_label.text="Create a room (Can't create "+str(self.IP_address)+":"+str(self.Port)+")"
+			self.Menu.ids.create_label.text="Create a room (Can't create "+str(self.IP_address)+":"+str(self.Port)+")"
 	
 	def sendMessage(self):
-		Menu=self.ids.scr_menu
-		Messages=self.ids.scr_messages
-		
-		txt=Messages.ids.textbox.text.rstrip()
+		txt=self.Messages.ids.textbox.text.rstrip()
 		#popup = Popup(title='Test popup', content=Label(text='Hello world'),size_hint=(None, None), size=(600, 800))
 		#popup.open()
-		if txt:
-			msg=SendMessage(text="<You> "+str(txt))
-			Messages.ids.messages.add_widget(msg)
-			txt="<"+self.get_ip()+"> "+str(txt)
-			if self.Admin:
-				self.broadcast(txt.encode('utf-8'), 0)
-			else:
-				self.server.sendall(txt.encode('utf-8'))
-				
-			Messages.ids.scroller.scroll_to(msg)
-			Messages.ids.textbox.text=""
+		try:
+			if txt:
+				self.addSendMessage("<You> "+str(txt))
+				if self.Admin:
+					self.broadcast(txt, None)
+				else:
+					self.server.sendall(txt.encode('utf-8'))
+		except:
+			self.disconnectServer()
 			
 	def disconnectServer(self):
+		self.Messages=self.ids.scr_messages
+		
 		self.clients=[]
 		self.stop_threads=True
 		self.Admin=False
@@ -293,22 +310,26 @@ class AppChat(BoxLayout):
 		self.stop_threads=False
 		
 		self.server.close()
-		self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
-		self.ids.sm.transition.direction = 'right'
-		self.ids.sm.current = "menu"
+		self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		
-		# Reset messages
-		Messages=self.ids.scr_messages
-		Messages.ids.messages.clear_widgets()
-	
+		if self!=None:
+			self.ids.sm.transition.direction = 'right'
+			self.ids.sm.current = "menu"
+			self.Messages.ids.messages.clear_widgets()
+
 	def quitApplication(self, app):
 		self.disconnectServer()
 		app.stop()
 			
-class ChatApp(App):
-        def build(self):
-        	self.load_kv('app.kv')
-        	return AppChat()
+class CryptedChatApp(App):
+
+	def build(self):
+		self.load_kv('app.kv')
+		return AppChat()
+
+	def on_stop(self):
+		AppChat().disconnectServer()
+		return True
  
 if __name__ == "__main__":
-	ChatApp().run()
+	appChat=CryptedChatApp().run()
